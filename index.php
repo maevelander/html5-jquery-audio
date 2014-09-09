@@ -5,17 +5,19 @@ Plugin Name: HTML5 jQuery Audio Player
 Plugin URI: http://wordpress.org/extend/plugins/html5-jquery-audio-player/
 Description: The trendiest audio player plugin for WordPress. Works on iPhone/iPad and other mobile devices. Insert with shortcode [hmp_player]
 Author: Enigma Plugins
-Version: 2.6
+Version: 2.6.1
 Author URI: http://enigmaplugins.com.au
 */
 
+error_reporting(0);
+ini_set('display_errors', 0);
+
 //function add script
-
 load_plugin_textdomain('hmpf', false, dirname(plugin_basename(__FILE__)) . '/languages/');
-
 
 require 'includes/db-settings.php';
 register_activation_hook( __FILE__, 'hmp_db_create' );
+
 add_action( 'admin_menu', 'my_plugin_menu' );
 function my_plugin_menu() {
     add_menu_page( 'HTML5 MP3 Player', 'HTML5 Player', 'manage_options', 'hmp-options', 'wp_hmp_options',plugin_dir_url( __FILE__ )."/music-beam.png" );
@@ -23,7 +25,6 @@ function my_plugin_menu() {
     add_submenu_page('hmp-options','Display Settings','Display Settings','manage_options','display_settings','wp_hmp_options');
     add_submenu_page( 'hmp-options', 'Manage Songs', 'Manage Songs', 'manage_options', 'hmp_palylist', 'wp_hmp_playlist' );	
 }
-
 
 function hmp_scripts_method() {
     $query = $_SERVER['PHP_SELF'];
@@ -38,12 +39,10 @@ function hmp_scripts_method() {
 	wp_enqueue_script( 'hmp-custom-js' );
     }
     wp_enqueue_style('thickbox');
-}    
- 
+}
 add_action('admin_enqueue_scripts', 'hmp_scripts_method');
 
 add_action( 'admin_init', 'register_mysettings' );
-
 function register_mysettings() {
     register_setting( 'baw-settings-group', 'buy_text' );
     register_setting( 'baw-settings-group', 'color' );
@@ -58,7 +57,7 @@ function register_mysettings() {
 
 function wp_hmp_options() {
     include 'player/settings.php';
- }
+}
 
 function wp_hmp_playlist(){
     include('playlist/add_playlist.php');		
@@ -93,13 +92,48 @@ function wp_hmp_player(){
 	$tc	=	'#cccccc';
     }	
 	
-    if($sb==0){ ?> <style type="text/css">.buy{ display:none !important;} .rating{ right:10px !important;}</style><?php } 
-    if(!empty($cl)){ ?><style type="text/css"> .ttw-music-player{ background:<?php echo $cl; ?>; !important;}   </style><?php }
-    if(!empty($tc)){ ?><style type="text/css"> .ttw-music-player .tracklist, .ttw-music-player .buy, .ttw-music-player .description, .ttw-music-player .player .title, .ttw-music-player .artist, .ttw-music-player .artist-outer{ color:<?php echo $tc; ?>; !important;}   </style><?php }
-    if($tc=='black'){ ?><style type="text/css">.ttw-music-player .player .title, .ttw-music-player .description, .ttw-music-player .tracklist li{ text-shadow:none !important;}</style><?php } 
-    if($sl==0){ ?> <style type="text/css"> .tracklist{ display:none !important;}   </style> <?php }
+    if($sb==0){
+?>
+    <style type="text/css">
+        .buy{ display:none !important;}
+        .rating{ right:10px !important;}
+    </style>
+<?php
+    }
+    
+    if(!empty($cl)){
+?>
+    <style type="text/css">
+        .ttw-music-player{ background:<?php echo $cl; ?>; !important;}
+    </style>
+<?php
+    }
+    
+    if(!empty($tc)){
+?>
+    <style type="text/css">
+        .ttw-music-player .tracklist, .ttw-music-player .buy, .ttw-music-player .description, .ttw-music-player
+        .player .title, .ttw-music-player .artist, .ttw-music-player .artist-outer{ color:<?php echo $tc; ?>; !important;}
+    </style>
+<?php
+    }
+    
+    if($tc=='black'){
+?>
+    <style type="text/css">
+        .ttw-music-player .player .title, .ttw-music-player .description, .ttw-music-player .tracklist li{ text-shadow:none !important;}
+    </style>
+<?php
+    }
+    
+    if($sl==0){
+?>  <style type="text/css">
+        .tracklist{ display:none !important;}
+    </style>
+<?php
+    }
 		  
-    $pluginurl	=	plugin_dir_url( __FILE__ );
+    $pluginurl	=   plugin_dir_url( __FILE__ );
 ?>
     <link href="<?php echo $pluginurl ; ?>includes/css/style.css" type="text/css" rel="stylesheet" media="screen" />
     <script type="text/javascript" src="<?php echo $pluginurl ; ?>includes/jquery-jplayer/jquery.jplayer.js"></script>
@@ -148,15 +182,15 @@ function wp_hmp_player(){
         ];
 	jQuery(document).ready(function(){
             jQuery('#myplayer').ttwMusicPlayer(myPlaylist, {
-			currencySymbol:'<?php echo $cr; ?>',
-        		description:"<?php echo $desc; ?>",
-			buyText:'<?php echo $bt; ?>',
-        		tracksToShow:<?php echo $nt; ?>,
-			<?php if($ap==0): ?>
-                            autoplay:false,
-			<?php else: ?>
-                            autoplay:true,
-			<?php endif; ?>
+                    currencySymbol:'<?php echo $cr; ?>',
+                    description:"<?php echo $desc; ?>",
+                    buyText:'<?php echo $bt; ?>',
+                    tracksToShow:<?php echo $nt; ?>,
+                    <?php if($ap==0): ?>
+                        autoplay:false,
+                    <?php else: ?>
+                        autoplay:true,
+                    <?php endif; ?>
             });
         });
  

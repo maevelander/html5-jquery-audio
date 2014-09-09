@@ -123,6 +123,10 @@ If you've tried all the obvious stuff and it's still not working please request 
 
 == Changelog ==
 
+= 2.6.1 =
+* DB Prefix issue fixed
+* tested but haven't found any issues regarding update/delete
+
 = 2.6 =
 * Internationalisation	[New]
 * Updating and Deleting song issue fixed [Bug]
