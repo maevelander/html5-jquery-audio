@@ -435,7 +435,7 @@
                         '    </div>' +
                         '    <div class="jPlayer-container"></div>' +
                         '</div>';
-
+                
                 $interface = $(markup).css({display:'none', opacity:0}).appendTo($self).slideDown('slow', function() {
                     $interface.animate({opacity:1});
 

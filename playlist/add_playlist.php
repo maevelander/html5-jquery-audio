@@ -1,162 +1,149 @@
 <div id="wpbody">
-
-<div id="wpbody-content">
+    <div id="wpbody-content">
 		
-			
-		
-<div class="wrap">
-<h2><?php _e('Manage Songs', 'hmpf') ?></h2>
-<?php
+        <div class="wrap">
+            <h2><?php _e('Manage Songs', 'hmpf') ?></h2>
+        <?php
+            global $wpdb;
+            $table		=	$wpdb->prefix."hmp_playlist"; // add quote marks //
+                
+            if(isset($_GET['id'])){
+                $id     =   strip_tags(urlencode($_GET['id']));
+            }
 
+            $action	=	"add";
+            if(isset($_GET['action'])){
+                $action     =	strip_tags(urlencode($_GET['action']));
+            }
 
-global $wpdb;
-$table		=	$wpdb->prefix."hmp_playlist"; // add quote marks //
+            $mp3Sql = "Select * From ".$wpdb->prefix."hmp_playlist";
+            $mp3Qry = mysql_query($mp3Sql);
+            $mp3Obj = mysql_fetch_object($mp3Qry);
 
-if(isset($_GET['id'])){
-	$id		=	strip_tags(urlencode($_GET['id']));
-}
+            $mp3Id = $mp3Obj->id;
 
+            if(($mp3Id == 0) || ($mp3Id == "") || ($mp3Id == NULL)){
+                $maxSql = "Select * From ".$wpdb->prefix."hmp_playlist";
+            }else{
+                $maxSql = "Select Max(id) As maxId From ".$wpdb->prefix."hmp_playlist";
+            }
+            
+            $maxQry = mysql_query($maxSql);
+            $maxObj = mysql_fetch_object($maxQry);
 
+            $maxId = $maxObj->maxId;
 
-$action		=	"add";
-if(isset($_GET['action'])){
-	$action	=	strip_tags(urlencode($_GET['action']));
-}
+            (($maxId == "") || ($maxId == NULL) ? $maxId = 0 : $maxId);
 
-$mp3Sql = "Select * From wp_hmp_playlist";
-$mp3Qry = mysql_query($mp3Sql);
-$mp3Obj = mysql_fetch_object($mp3Qry);
+            $secureId = $maxId + 1;
 
-$mp3Id = $mp3Obj->id;
+            $md5Secure = md5($secureId);
 
-if(($mp3Id == 0) || ($mp3Id == "") || ($mp3Id == NULL)){
-	$maxSql = "Select * From wp_hmp_playlist";
-}
-else{
-	$maxSql = "Select Max(id) As maxId From wp_hmp_playlist";
-}
-$maxQry = mysql_query($maxSql);
-$maxObj = mysql_fetch_object($maxQry);
+    switch($action){
 
-$maxId = $maxObj->maxId;
+        case "add";
+            if($_POST['submit']){
+                $mp3        =	strip_tags($_POST['mp3']);
+                $ogg        =	strip_tags($_POST['ogg']);
+                $rating     =	strip_tags($_POST['rating']);
+                $title      =	strip_tags($_POST['title']);
+                $buy        =	strip_tags($_POST['buy']);
+                $price      =	strip_tags($_POST['price']);
+                $cover      =	strip_tags($_POST['cover']);
+                $duration   =	strip_tags($_POST['duration']);
+                $artist     =	strip_tags($_POST['artist']);
+                $secure     =	strip_tags($md5Secure);
 
-(($maxId == "") || ($maxId == NULL) ? $maxId = 0 : $maxId);
+                $data	=   array(
+                                'ogg' 		=> $ogg,
+                                'mp3' 		=> $mp3,
+                                'rating' 	=> $rating,
+                                'title' 	=> $title,
+                                'buy' 		=> $buy,
+                                'price' 	=> $price,
+                                'cover' 	=> $cover,
+                                'duration' 	=> $duration,
+                                'artist' 	=> $artist,
+                                'secure' 	=> $secure
 
-$secureId = $maxId + 1;
+                            );
+                
+                if(!empty($_POST['mp3']) and !empty($_POST['ogg']) and !empty($_POST['title']) and !empty($_POST['cover'])){
+                    $insert	=	$wpdb->insert($table,$data) or die(mysql_error());
+                    $isuccess	=	__("Song added successfully to the playlist", "hmpf");
+                }else{
+                    $ierror	=	__("Please fill all fields marked 'required'", "hmpf");
+                }
+            }
+        break;
+        case "update";
+            if($_POST['update']){
+                $mp3        =	strip_tags($_POST['mp3']);
+                $ogg        =	strip_tags($_POST['ogg']);
+                $rating     =	strip_tags($_POST['rating']);
+                $title      =	strip_tags($_POST['title']);
+                $buy        =	strip_tags($_POST['buy']);
+                $price      =	strip_tags($_POST['price']);
+                $cover      =	strip_tags($_POST['cover']);
+                $duration   =	strip_tags($_POST['duration']);
+                $artist     =	strip_tags($_POST['artist']);
 
-$md5Secure = md5($secureId);
+                $data	=   array(
+                                'ogg' 		=>  $ogg,
+                                'mp3' 		=>  $mp3,
+                                'rating' 	=>  $rating,
+                                'title' 	=>  $title,
+                                'buy' 		=>  $buy,
+                                'price' 	=>  $price,
+                                'cover' 	=>  $cover,
+                                'duration' 	=>  $duration,
+                                'artist' 	=>  $artist
+                            );
 
+                $ID     =   array( 'secure'	=>  $id );
+                
+                if(!empty($_POST['mp3']) and !empty($_POST['ogg']) and !empty($_POST['title']) and !empty($_POST['cover'])){
+                    $update     =   $wpdb->update($table,$data,$ID);
+                    $usuccess	=   __("Song updated successfully ", "hmpf");
+                }else{
+                    $uerror	=   __("Please fill all fields marked 'required'", "hmpf");
+                }
+            }
+        break;
+        case "delete";
+            $delete     =   $wpdb->query( "DELETE FROM $table WHERE secure='$id'" );
+            if($delete){
+                $dsuccess	=   __("Song delete successfully ", "hmpf");
+            }else{
+                $derror	=   __("Something went wrong", "hmpf");
+            }
+        break;	
+    }
 
-switch($action){
-	
-	case "add";
-		if($_POST['submit']){
-	$mp3		=	strip_tags($_POST['mp3']);
-	$ogg		=	strip_tags($_POST['ogg']);
-	$rating		=	strip_tags($_POST['rating']);
-	$title		=	strip_tags($_POST['title']);
-	$buy		=	strip_tags($_POST['buy']);
-	$price		=	strip_tags($_POST['price']);
-	$cover		=	strip_tags($_POST['cover']);
-	$duration	=	strip_tags($_POST['duration']);
-	$artist		=	strip_tags($_POST['artist']);
-	$secure		=	strip_tags($md5Secure);
-	
-$data	=	array(
-				'ogg' 		=> $ogg,
-				'mp3' 		=> $mp3,
-				'rating' 	=> $rating,
-				'title' 	=> $title,
-				'buy' 		=> $buy,
-				'price' 	=> $price,
-				'cover' 	=> $cover,
-				'duration' 	=> $duration,
-				'artist' 	=> $artist,
-				'secure' 	=> $secure
+    $usql	=   "SELECT * FROM $table WHERE secure='$id'";
+    $uresults 	=   $wpdb->get_row( $usql  );
 
-				);
-if(!empty($_POST['mp3']) and !empty($_POST['ogg']) and !empty($_POST['title']) and !empty($_POST['cover'])){
-	
-	$insert		=	$wpdb->insert($table,$data) or die(mysql_error());
-	$isuccess	=	__("Song added successfully to the playlist", "hmpf");
-		
-}else{
-	$ierror		=	__("Please fill all fields marked 'required'", "hmpf");
-}
-
-}
-
-
-	break;
-	
-	
-	
-	case "update";
-	
-		
-		
-		if($_POST['update']){
-	
-	
-	
-	
-	$mp3		=	strip_tags($_POST['mp3']);
-	$ogg		=	strip_tags($_POST['ogg']);
-	$rating		=	strip_tags($_POST['rating']);
-	$title		=	strip_tags($_POST['title']);
-	$buy		=	strip_tags($_POST['buy']);
-	$price		=	strip_tags($_POST['price']);
-	$cover		=	strip_tags($_POST['cover']);
-	$duration	=	strip_tags($_POST['duration']);
-	$artist		=	strip_tags($_POST['artist']);
-	
-
-$data	=	array(
-				'ogg' 		=> $ogg,
-				'mp3' 		=> $mp3,
-				'rating' 	=> $rating,
-				'title' 	=> $title,
-				'buy' 		=> $buy,
-				'price' 	=> $price,
-				'cover' 	=> $cover,
-				'duration' 	=> $duration,
-				'artist' 	=> $artist
-
-				);
-				
-$ID		=	array(
-			'secure'	=>	$id
-			
-			);
-if(!empty($_POST['mp3']) and !empty($_POST['ogg']) and !empty($_POST['title']) and !empty($_POST['cover'])){
-	
-	$update		=	$wpdb->update($table,$data,$ID);
-	$usuccess	=	__("Song updated successfully ", "hmpf");
-		
-}else{
-	$uerror		=	__("Please fill all fields marked 'required'", "hmpf");
-}
-
-}
-	
-	break;
-	
-	case "delete";
-		
-		$delete		=	$wpdb->query(
-							"DELETE FROM $table WHERE secure='$id'"
-						);
-	break;	
-}
-
-$usql		=	"SELECT * FROM $table WHERE secure='$id'";
-$uresults 	= 	$wpdb->get_row( $usql  );
-
+    if($action=='update'):
 ?>
 
-<?php if($action=='update'): ?>
-
 <table class="form-table">
+    <?php if(!empty($usuccess)): ?>
+        
+        <tr valign="top">
+       
+        <td width="25%"><span style="color:green;"><?php echo $usuccess; ?></span></td>
+       
+        </tr>
+        <?php elseif(!empty($uerror)): ?>
+        
+        
+        
+        <tr valign="top">
+       
+        <td width="25%"><span style="color:red;"><?php echo $uerror; ?></span></td>
+       
+        </tr>
+        <?php endif ?>
         <tr valign="top">
         <th scope="row"></th>
         <td width="25%"></td>
@@ -281,13 +268,35 @@ $uresults 	= 	$wpdb->get_row( $usql  );
 </form>
 
 
+<?php elseif($action=='delete'): ?>
 
-
-
+        <table class="form-table">
+        <?php if(!empty($dsuccess)): ?>
+        
+        <tr valign="top">
+       
+        <td width="25%"><span style="color:green;"><?php echo $dsuccess; ?></span></td>
+       
+        </tr>
+        <?php elseif(!empty($derror)): ?>
+        
+        
+        
+        <tr valign="top">
+       
+        <td width="25%"><span style="color:red;"><?php echo $derror; ?></span></td>
+       
+        </tr>
+        <?php endif ?>
+        <tr>
+            <td>
+                <a href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=hmp_palylist">
+                    <input type="button" class="button-primary" value="<?php _e("Add New Song", "hmpf") ?>" name="update" />
+                </a>
+            </td>
+        </tr>
+        </table>
 <?php else:?>
-
-
-
 
 <table class="form-table">
         
@@ -307,8 +316,25 @@ $uresults 	= 	$wpdb->get_row( $usql  );
         <td width="25%"><span style="color:red;"><?php echo $ierror; ?></span></td>
        
         </tr>
-        <?php endif ?>
+        <?php
+            endif;
+            if(!empty($dsuccess)): ?>
         
+        <tr valign="top">
+       
+        <td width="25%"><span style="color:green;"><?php echo $dsuccess; ?></span></td>
+       
+        </tr>
+        <?php elseif(!empty($derror)): ?>
+        
+        
+        
+        <tr valign="top">
+       
+        <td width="25%"><span style="color:red;"><?php echo $derror; ?></span></td>
+       
+        </tr>
+        <?php endif ?>
         <tr valign="top">
         <th scope="row"></th>
         <td width="25%"></td>
