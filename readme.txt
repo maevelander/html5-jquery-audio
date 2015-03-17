@@ -3,7 +3,7 @@ Contributors: EnigmaWeb
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CEJ9HFWJ94BG4
 Tags: mp3 player, audio player, music player, ogg player, HTML5 audio player, mp3, podcast, jquery player
 Requires at least: 3.1
-Tested up to: 4.0
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -34,13 +34,16 @@ This demo shows the player with tracklist enabled, ratings on, and autoplay off.
 
 This is Lite (free) version of the plugin. [Get Pro Version](http://enigmaplugins.com/plugins/html5-jquery-audio-pro/) if you need the following advanced features:
 
-*	Mulitple Playlists - create as many playlists as you like and embed any number of players in your site.
-*	Drag n Drop playlist manager so you can order tracks
-*	Fully Responsive Design
-*	Enhanced admin area including smart AJAX input forms
-*	More customisation control - adjust player width, choose whether to display ratings, artwork and more.
-*	Add up to 3 buy/download buttons so you can sell your music in several places (eg iTunes, BandCamp, etc)
-*	Display the player in a sidebar using a widget
+*	Mulitple Playlists – create as many playlists as you like and embed any number of players on different pages of your site
+*	Drag n Drop playlist manager so you can reorder tracks
+*	Fully Responsive – resizes and adjust layout/design for responsive websites
+*	On/off option for ratings, artwork, artist field, auto-repeat, and cover art
+*	Widget support
+*	Embed full playlist or individual tracks with shortcodes
+*	Works in all modern browsers - IE9+, Safari, Opera, Firefox, Chrome
+*	Works on mobile devices including iPhone/iPad
+*	Can enable Buy or Download tracks buttons (x3)
+*	Integrates with Easy Digital Downloads plugin for selling your music
 
 Please note that Pro version will not work on Windows Server environment.
 
@@ -120,6 +123,7 @@ If you've tried all the obvious stuff and it's still not working please request 
 
 1. An example of the inserted player
 2. The display settings screen in WP-Admin
+3. The add songs screen in WP-Admin
 
 == Changelog ==
 
