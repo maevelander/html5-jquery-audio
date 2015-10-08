@@ -2,7 +2,7 @@
     <div id="wpbody-content">
 		
         <div class="wrap">
-            <h2><?php _e('Manage Songs', 'hmpf') ?></h2>
+            <h2><?php _e('Manage Songs', 'html5-jquery-audio-player') ?></h2>
         <?php
             global $wpdb;
             $table = $wpdb->prefix."hmp_playlist"; // add quote marks //
@@ -70,9 +70,9 @@
 
                         if(!empty($_POST['mp3']) and !empty($_POST['ogg']) and !empty($_POST['title']) and !empty($_POST['cover'])){
                             $insert = $wpdb->insert($table,$data) or die(mysql_error());
-                            $isuccess = __("Song added successfully to the playlist", "hmpf");
+                            $isuccess = __("Song added successfully to the playlist", "html5-jquery-audio-player");
                         }else{
-                            $ierror = __("Please fill all fields marked 'required'", "hmpf");
+                            $ierror = __("Please fill all fields marked 'required'", "html5-jquery-audio-player");
                         }
                     }
                 break;
@@ -104,18 +104,18 @@
 
                         if(!empty($_POST['mp3']) and !empty($_POST['ogg']) and !empty($_POST['title']) and !empty($_POST['cover'])){
                             $update     =   $wpdb->update($table,$data,$ID);
-                            $usuccess	=   __("Song updated successfully ", "hmpf");
+                            $usuccess	=   __("Song updated successfully ", "html5-jquery-audio-player");
                         }else{
-                            $uerror	=   __("Please fill all fields marked 'required'", "hmpf");
+                            $uerror	=   __("Please fill all fields marked 'required'", "html5-jquery-audio-player");
                         }
                     }
                 break;
                 case "delete";
                     $delete     =   $wpdb->query( "DELETE FROM $table WHERE secure='$id'" );
                     if($delete){
-                        $dsuccess	=   __("Song delete successfully ", "hmpf");
+                        $dsuccess	=   __("Song delete successfully ", "html5-jquery-audio-player");
                     }else{
-                        $derror	=   __("Something went wrong", "hmpf");
+                        $derror	=   __("Something went wrong", "html5-jquery-audio-player");
                     }
                 break;	
             }
@@ -159,14 +159,14 @@
                         <thead>
                             <th scope="col">
                                 <strong style="color:#008001; margin-left: 10px;">
-                                    <?php _e("Help Improve This Plugin!", "hmpf") ?>
+                                    <?php _e("Help Improve This Plugin!", "html5-jquery-audio-player") ?>
                                 </strong>
                             </th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td style="border:0;">
-                                    <?php _e("Enjoyed this plugin? All donations are used to improve and further develop this plugin. Thanks for your contribution.", "hmpf") ?>
+                                    <?php _e("Enjoyed this plugin? All donations are used to improve and further develop this plugin. Thanks for your contribution.", "html5-jquery-audio-player") ?>
                                 </td>
                             </tr>
                             <tr>
@@ -181,9 +181,9 @@
                             </tr>
                             <tr>
                                 <td style="border:0;">
-                                    <?php _e('You can also help by','hmpf') ?>
+                                    <?php _e('You can also help by','html5-jquery-audio-player') ?>
                                     <a href="http://wordpress.org/extend/plugins/html5-jquery-audio-player/" target="_blank">
-                                        <?php _e("rating this plugin on wordpress.org", "hmpf") ?>
+                                        <?php _e("rating this plugin on wordpress.org", "html5-jquery-audio-player") ?>
                                     </a>
                                 </td>
                             </tr>
@@ -192,7 +192,7 @@
                     <table cellpadding="0" class="widefat donation" style="margin-bottom:10px;">
                         <thead>
                             <th scope="col" style="margin-left: 10px;">
-                                <?php _e("Pro Version Features", "hmpf") ?>
+                                <?php _e("Pro Version Features", "html5-jquery-audio-player") ?>
                             </th>
                         </thead>
                         <tbody>
@@ -200,30 +200,30 @@
                                 <td style="border:0;">
                                     <ul>
                                         <li>
-                                            <?php _e("Mulitple Playlists", "hmpf") ?>
+                                            <?php _e("Mulitple Playlists", "html5-jquery-audio-player") ?>
                                         </li>
 					<li>
-                                            <?php _e("Drag n Drop playlist manager so you can reorder tracks", "hmpf") ?>
+                                            <?php _e("Drag n Drop playlist manager so you can reorder tracks", "html5-jquery-audio-player") ?>
                                         </li>
 					<li>
-                                            <?php _e("Fully Responsive", "hmpf") ?>
+                                            <?php _e("Fully Responsive", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
-                                            <?php _e("More customisation options", "hmpf") ?>
+                                            <?php _e("More customisation options", "html5-jquery-audio-player") ?>
                                         </li>
 					<li>
-                                            <?php _e("On/off option for ratings, artwork, artist field, auto-repeat, and cover art", "hmpf") ?>
+                                            <?php _e("On/off option for ratings, artwork, artist field, auto-repeat, and cover art", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
-                                            <?php _e("Widget support", "hmpf") ?>
+                                            <?php _e("Widget support", "html5-jquery-audio-player") ?>
                                         </li>
 					<li>
-                                            <?php _e("3 buy/download buttons (optional)", "hmpf") ?>
+                                            <?php _e("3 buy/download buttons (optional)", "html5-jquery-audio-player") ?>
                                         </li>
                                     </ul>
                                     <br />		
                                     <a href="http://enigmaplugins.com/plugins/html5-jquery-audio-pro/" target="_blank">
-                                        <?php _e("Get Pro", "hmpf") ?>
+                                        <?php _e("Get Pro", "html5-jquery-audio-player") ?>
                                     </a>
 				</td>
                             </tr>
@@ -232,15 +232,15 @@
                     <table cellpadding="0" class="widefat" border="0">
                         <thead>
                             <th scope="col" style="margin-left: 10px;">
-                                <?php _e("Need Support?", "hmpf") ?>
+                                <?php _e("Need Support?", "html5-jquery-audio-player") ?>
                             </th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td style="border:0;">
-                                    <?php _e("If you are having problems with this plugin please visit the", "hmpf") ?>
+                                    <?php _e("If you are having problems with this plugin please visit the", "html5-jquery-audio-player") ?>
                                     <a href="http://wordpress.org/support/plugin/html5-jquery-audio-player" target="_blank">
-                                        <?php _e("Support Forum", "hmpf") ?>
+                                        <?php _e("Support Forum", "html5-jquery-audio-player") ?>
                                     </a>
                                 </td>
                             </tr>
@@ -252,7 +252,7 @@
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("MP3 Link update", "hmpf") ?>
+                            <?php _e("MP3 Link update", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td width="29%">
@@ -262,16 +262,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Full File Path of mp3 file", "hmpf") ?>
+                            <?php _e("Full File Path of mp3 file", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Ogg Link", "hmpf") ?>
+                            <?php _e("Ogg Link", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -281,16 +281,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Full File Path of ogg file", "hmpf") ?>
+                            <?php _e("Full File Path of ogg file", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Rating", "hmpf") ?>
+                            <?php _e("Rating", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -298,14 +298,14 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("Plz put digit 1 to 5", "hmpf") ?>
+                            <?php _e("Plz put digit 1 to 5", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Song Title", "hmpf") ?>
+                            <?php _e("Song Title", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -314,16 +314,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Title of the song", "hmpf") ?>
+                            <?php _e("Title of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Link Buy Text", "hmpf") ?>
+                            <?php _e("Link Buy Text", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -331,14 +331,14 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("This will link BUY button", "hmpf") ?>
+                            <?php _e("This will link BUY button", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Song Price" ,"hmpf") ?>
+                            <?php _e("Song Price" ,"html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -346,14 +346,14 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("Price of the song", "hmpf") ?>
+                            <?php _e("Price of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Cover Image", "hmpf") ?>
+                            <?php _e("Cover Image", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -363,7 +363,7 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
                             <?php _e("Full File Path to cover image ( 125*125 )", "") ?>
                         </span>
@@ -372,7 +372,7 @@
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Duration", "hmpf") ?>
+                            <?php _e("Duration", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -380,14 +380,14 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("Duration of the song", "hmpf") ?>
+                            <?php _e("Duration of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Artist", "hmpf") ?>
+                            <?php _e("Artist", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -395,7 +395,7 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("Artist of the song", "hmpf") ?>
+                            <?php _e("Artist of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
@@ -405,7 +405,7 @@
                     </th>
                     <td>
                         <a href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=hmp_palylist&action=add">
-                            <input type="button" class="button-primary" value="<?php _e("Add New Song", "hmpf") ?>" name="update" />
+                            <input type="button" class="button-primary" value="<?php _e("Add New Song", "html5-jquery-audio-player") ?>" name="update" />
                         </a>
                     </td>
                     <td></td>
@@ -443,7 +443,7 @@
                 <tr>
                     <td>
                         <a href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=hmp_palylist">
-                            <input type="button" class="button-primary" value="<?php _e("Add New Song", "hmpf") ?>" name="update" />
+                            <input type="button" class="button-primary" value="<?php _e("Add New Song", "html5-jquery-audio-player") ?>" name="update" />
                         </a>
                     </td>
                 </tr>
@@ -502,14 +502,14 @@
                         <thead>
                             <th scope="col">
                                 <strong style="color:#008001; margin-left: 10px;">
-                                    <?php _e("Help Improve This Plugin!", "hmpf") ?>
+                                    <?php _e("Help Improve This Plugin!", "html5-jquery-audio-player") ?>
                                 </strong>
                             </th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td style="border:0;">
-                                    <?php _e("Enjoyed this plugin? All donations are used to improve and further develop this plugin. Thanks for your contribution.", "hmpf") ?>
+                                    <?php _e("Enjoyed this plugin? All donations are used to improve and further develop this plugin. Thanks for your contribution.", "html5-jquery-audio-player") ?>
                                 </td>
                             </tr>
                             <tr>
@@ -524,9 +524,9 @@
                             </tr>
                             <tr>
                                 <td style="border:0;">
-                                    <?php _e("You can also help by", "hmpf") ?>
+                                    <?php _e("You can also help by", "html5-jquery-audio-player") ?>
                                     <a href="http://wordpress.org/extend/plugins/html5-jquery-audio-player/" target="_blank">
-                                        <?php _e("rating this plugin on wordpress.org", "hmpf") ?>
+                                        <?php _e("rating this plugin on wordpress.org", "html5-jquery-audio-player") ?>
                                     </a>
                                 </td>
                             </tr>
@@ -535,7 +535,7 @@
                     <table cellpadding="0" class="widefat donation" style="margin-bottom:10px;">
                         <thead>
                             <th scope="col" style="padding-left: 12px;">
-                                <?php _e("Pro Version", "hmpf") ?>
+                                <?php _e("Pro Version", "html5-jquery-audio-player") ?>
                             </th>
                         </thead>
                         <tbody>
@@ -543,22 +543,22 @@
                                 <td style="border:0;">
                                     <ul>
                                         <li>
-                                            <?php _e("Mulitple Playlists", "hmpf") ?>
+                                            <?php _e("Mulitple Playlists", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
-                                            <?php _e("Drag n Drop playlist manager so you can reorder tracks", "hmpf") ?>
+                                            <?php _e("Drag n Drop playlist manager so you can reorder tracks", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
-                                            <?php _e("Fully Responsive", "hmpf") ?>
+                                            <?php _e("Fully Responsive", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
-                                            <?php _e("More customisation options", "hmpf") ?>
+                                            <?php _e("More customisation options", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
-                                            <?php _e("On/off option for ratings, artwork, artist field, auto-repeat, and cover art", "hmpf") ?>
+                                            <?php _e("On/off option for ratings, artwork, artist field, auto-repeat, and cover art", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
-                                            <?php _e("Widget support", "hmpf") ?>
+                                            <?php _e("Widget support", "html5-jquery-audio-player") ?>
                                         </li>
                                         <li>
                                             <?php _e("3 buy/download buttons (optional)", "") ?>
@@ -566,7 +566,7 @@
                                     </ul>
                                     <br />		
                                     <a href="http://enigmaplugins.com/plugins/html5-jquery-audio-pro/" target="_blank">
-                                        <?php _e("Get Pro", "hmpf") ?>
+                                        <?php _e("Get Pro", "html5-jquery-audio-player") ?>
                                     </a>
                                 </td>
                             </tr>
@@ -575,15 +575,15 @@
                     <table cellpadding="0" class="widefat" border="0">
                         <thead>
                             <th scope="col" style="padding-left: 12px;">
-                                <?php _e("Need Support?" ,"hmpf") ?>
+                                <?php _e("Need Support?" ,"html5-jquery-audio-player") ?>
                             </th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td style="border:0;">
-                                    <?php _e("If you are having problems with this plugin please visit the", "hmpf") ?>
+                                    <?php _e("If you are having problems with this plugin please visit the", "html5-jquery-audio-player") ?>
                                     <a href="http://wordpress.org/support/plugin/html5-jquery-audio-player" target="_blank">
-                                        <?php _e("Support Forum", "hmpf") ?>
+                                        <?php _e("Support Forum", "html5-jquery-audio-player") ?>
                                     </a>
                                 </td>
                             </tr>
@@ -595,7 +595,7 @@
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("MP3 Link", "hmpf") ?>
+                            <?php _e("MP3 Link", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td width="29%">
@@ -605,16 +605,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Full File Path of mp3 file", "hmpf") ?>
+                            <?php _e("Full File Path of mp3 file", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Ogg Link", "hmpf") ?>
+                            <?php _e("Ogg Link", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -624,16 +624,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Full File Path of ogg file", "hmpf") ?>
+                            <?php _e("Full File Path of ogg file", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Rating", "hmpf") ?>
+                            <?php _e("Rating", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -641,14 +641,14 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("Please put digit 1 to 5", "hmpf") ?>
+                            <?php _e("Please put digit 1 to 5", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Song Title", "hmpf") ?>
+                            <?php _e("Song Title", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -657,16 +657,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Title of the song", "hmpf") ?>
+                            <?php _e("Title of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Link Buy Text", "hmpf") ?>
+                            <?php _e("Link Buy Text", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -674,14 +674,14 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("This will link BUY button" ,"hmpf") ?>
+                            <?php _e("This will link BUY button" ,"html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Song Price", "hmpf") ?>
+                            <?php _e("Song Price", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -689,14 +689,14 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("Price of the song", "hmpf") ?>
+                            <?php _e("Price of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Cover Image", "hmpf") ?>
+                            <?php _e("Cover Image", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -706,16 +706,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Required", "hmpf") ?>
+                                <?php _e("Required", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Full File Path to cover image ( 125*125 )", "hmpf") ?>
+                            <?php _e("Full File Path to cover image ( 125*125 )", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Duration", "hmpf") ?>
+                            <?php _e("Duration", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -724,16 +724,16 @@
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
                             <strong>
-                                <?php _e("Format: 10:00", "hmpf") ?>
+                                <?php _e("Format: 10:00", "html5-jquery-audio-player") ?>
                             </strong>
-                            <?php _e("Duration of the song", "hmpf") ?>
+                            <?php _e("Duration of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
                         <strong>
-                            <?php _e("Artist", "hmpf") ?>
+                            <?php _e("Artist", "html5-jquery-audio-player") ?>
                         </strong>
                     </th>
                     <td>
@@ -741,13 +741,13 @@
                     </td>
                     <td>
                         <span style="font-size:11px; color:#b2b2b2; font-style:italic;">
-                            <?php _e("Artist of the song", "hmpf") ?>
+                            <?php _e("Artist of the song", "html5-jquery-audio-player") ?>
                         </span>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th scope="row">
-                        <input type="submit" class="button-primary" value="<?php _e('Add Song', 'hmpf') ?>" name="submit" />
+                        <input type="submit" class="button-primary" value="<?php _e('Add Song', 'html5-jquery-audio-player') ?>" name="submit" />
                     </th>
                     <td></td>
                     <td></td>
@@ -763,37 +763,37 @@
                     <tr>
                         <th scope="col">
                             <a href="javascrip:;">
-                                <?php _e("Title", "hmpf") ?>
+                                <?php _e("Title", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="25%">
                             <a href="javascrip:;">
-                                <?php _e("Artist", "hmpf") ?>
+                                <?php _e("Artist", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Price", "hmpf") ?>
+                                <?php _e("Price", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Rating", "hmpf") ?>
+                                <?php _e("Rating", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Duration", "hmpf") ?>
+                                <?php _e("Duration", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Edit", "hmpf") ?>
+                                <?php _e("Edit", "html5-jquery-audio-player") ?>
                             </a>
                         </th>	
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Delete", "hmpf") ?>
+                                <?php _e("Delete", "html5-jquery-audio-player") ?>
                             </a>
                         </th>	
                     </tr>
@@ -802,37 +802,37 @@
                     <tr>
                         <th scope="col">
                             <a href="javascrip:;">
-                                <?php _e("Title", "hmpf") ?>
+                                <?php _e("Title", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="25%">
                             <a href="javascrip:;">
-                                <?php _e("Artist", "hmpf") ?>
+                                <?php _e("Artist", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Price", "hmpf") ?>
+                                <?php _e("Price", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Rating", "hmpf") ?>
+                                <?php _e("Rating", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Duration", "hmpf") ?>
+                                <?php _e("Duration", "html5-jquery-audio-player") ?>
                             </a>
                         </th>
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Edit", "hmpf") ?>
+                                <?php _e("Edit", "html5-jquery-audio-player") ?>
                             </a>
                         </th>	
                         <th scope="col" width="10%">
                             <a href="javascrip:;">
-                                <?php _e("Delete", "hmpf") ?>
+                                <?php _e("Delete", "html5-jquery-audio-player") ?>
                             </a>
                         </th>		
                      </tr>
@@ -864,12 +864,12 @@
                                 </td>
                                 <td width="10%">
                                     <a href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=hmp_palylist&action=update&id=<?php echo $result->secure; ?>">
-                                        <?php _e("Update", "hmpf") ?>
+                                        <?php _e("Update", "html5-jquery-audio-player") ?>
                                     </a>
                                 </td>
                                 <td width="10%">
                                     <a href="<?php bloginfo('url'); ?>/wp-admin/admin.php?page=hmp_palylist&action=delete&id=<?php echo $result->secure; ?>">
-                                        <?php _e("Delete", "hmpf") ?>
+                                        <?php _e("Delete", "html5-jquery-audio-player") ?>
                                     </a>
                                 </td>
                             </tr>
@@ -878,7 +878,7 @@
                     else:
                 ?>
                         <td class="posts column-posts num" colspan="7">
-                            <?php _e("Please Add Songs No Songs Listed Yet", "hmpf") ?>
+                            <?php _e("Please Add Songs No Songs Listed Yet", "html5-jquery-audio-player") ?>
                         </td>
                 <?php
                     endif;

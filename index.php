@@ -7,13 +7,12 @@ Description: The trendiest audio player plugin for WordPress. Works on iPhone/iP
 Author: Enigma Plugins
 Version: 2.6.2
 Author URI: http://enigmaplugins.com.au
+Text Domain: html5-jquery-audio-player
+Domain Path: /languages
 */
 
 error_reporting(0);
 ini_set('display_errors', 0);
-
-//function add script
-load_plugin_textdomain('hmpf', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
 require 'includes/db-settings.php';
 register_activation_hook( __FILE__, 'hmp_db_create' );
@@ -176,8 +175,8 @@ function wp_hmp_player(){
 	{
             mp3:'<?php echo $pluginurl; ?>player/mix/1.mp3',
             oga:'<?php echo $pluginurl; ?>player/mix/1.ogg',
-            title:'<?php __('Sample Track','hmpf') ?>',
-            artist:'<?php __('Sample', 'hmpf') ?>',
+            title:'<?php __('Sample Track','html5-jquery-audio-player') ?>',
+            artist:'<?php __('Sample', 'html5-jquery-audio-player') ?>',
             rating:4,
             buy:'#',
             price:'1.00',
@@ -247,9 +246,9 @@ function implement_ajax5(){
                 ), 
                 array( 'ID' => $song_id )
         ) or die(mysql_error());
-        echo __('Thank You', 'hmpf');
+        echo __('Thank You', 'html5-jquery-audio-player');
     }else{
-        echo __('Already rated', 'hmpf');
+        echo __('Already rated', 'html5-jquery-audio-player');
     }	
     die();
 }

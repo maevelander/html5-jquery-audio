@@ -126,9 +126,9 @@ If you've tried all the obvious stuff and it's still not working please request 
 3. The add songs screen in WP-Admin
 
 == Changelog ==
+
 = 2.6.2 =
-* Remove error-reporting().
-* Missing strings marked for translation
+* Missing Strings mark for translation.
 
 = 2.6.1 =
 * DB prefix issue fixed
