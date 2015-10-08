@@ -25,7 +25,6 @@
                             </tr>
                             <tr>
                                 <td style="border:0;">
-                                    <!--<img src="<?php //echo plugin_dir_url( __FILE__ )."donate.png" ; ?>"  align="middle" />-->
                                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
                                         <input type="hidden" name="cmd" value="_s-xclick">
 					<input type="hidden" name="hosted_button_id" value="A74K2K689DWTY">
@@ -36,7 +35,7 @@
                             </tr>
                             <tr>
                                 <td style="border:0;">
-                                    You can also help by 
+                                    <?php _e('You can also help by','hmpf'); ?>
                                     <a href="http://wordpress.org/extend/plugins/html5-jquery-audio-player/" target="_blank">
                                         <?php _e("rating this plugin on wordpress.org", "hmpf") ?>
                                     </a>
@@ -106,52 +105,117 @@
                     </td>
                 </tr>
                 <form method="post" action="options.php">
-                    <?php settings_fields( 'baw-settings-group' ); ?>
+                <?php settings_fields( 'baw-settings-group' ); ?>
                 <tr valign="top">
-        <th scope="row"><strong><?php _e("Show Buy Text", "hmpf") ?></strong></th>
-        <td><?php _e("Yes", "hmpf") ?> <input id="rd1" type="radio" name="showbuy" value="1" <?php  if(get_option('showbuy')==1){ echo 'checked="checked"';} ?> />  <?php _e("No", "hmpf") ?> <input id="rd0" type="radio" name="showbuy" value="0" <?php  if(get_option('showbuy')==0){ echo 'checked="checked"';} ?> /></td>
-        </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Show Buy Text", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <?php _e("Yes", "hmpf") ?>
+                        <input id="rd1" type="radio" name="showbuy" value="1" <?php  if(get_option('showbuy')==1){ echo 'checked="checked"';} ?> />
+                        <?php _e("No", "hmpf") ?>
+                        <input id="rd0" type="radio" name="showbuy" value="0" <?php  if(get_option('showbuy')==0){ echo 'checked="checked"';} ?> />
+                    </td>
+                </tr>
                 <tr valign="top" class="buy_text">	
-        <th scope="row"><strong><?php _e("Buy Text", "hmpf") ?></strong></th>
-        <td><input type="text" name="buy_text" value="<?php echo get_option('buy_text'); ?>" size="50" id="omer"  /><span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;"><?php _e("works only if you have selected show buy text to 'YES'", "hmpf") ?></span></td>
-        </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Buy Text", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <input type="text" name="buy_text" value="<?php echo get_option('buy_text'); ?>" size="50" id="omer" />
+                        <span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;">
+                            <?php _e("works only if you have selected show buy text to 'YES'", "hmpf") ?>
+                        </span>
+                    </td>
+                </tr>
                 <tr valign="top">
-        <th scope="row"><strong><?php _e("Show Track List", "hmpf") ?></strong></th>
-        <td><?php _e("Yes", "hmpf") ?> <input id="rd3" type="radio" name="showlist" value="1" <?php  if(get_option('showlist')==1){ echo 'checked="checked"';} ?> />  <?php _e("No", "hmpf") ?> <input id="rd4" type="radio" name="showlist" value="0" <?php  if(get_option('showlist')==0){ echo 'checked="checked"';} ?> /></td>
-      </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Show Track List", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <?php _e("Yes", "hmpf") ?>
+                        <input id="rd3" type="radio" name="showlist" value="1" <?php  if(get_option('showlist')==1){ echo 'checked="checked"';} ?> />
+                        <?php _e("No", "hmpf") ?>
+                        <input id="rd4" type="radio" name="showlist" value="0" <?php  if(get_option('showlist')==0){ echo 'checked="checked"';} ?> />
+                    </td>
+                </tr>
                 <tr valign="top">
-        <th scope="row"><strong><?php _e("Auto Play", "hmpf") ?></strong></th>
-        <td><?php _e("Yes", "hmpf") ?> <input id="rd3" type="radio" name="autoplay" value="1" <?php  if(get_option('autoplay')==1){ echo 'checked="checked"';} ?> />  <?php _e("No", "hmpf") ?> <input id="rd4" type="radio" name="autoplay" value="0" <?php  if(get_option('autoplay')==0){ echo 'checked="checked"';} ?> /></td>
-        </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Auto Play", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <?php _e("Yes", "hmpf") ?>
+                        <input id="rd3" type="radio" name="autoplay" value="1" <?php  if(get_option('autoplay')==1){ echo 'checked="checked"';} ?> />
+                        <?php _e("No", "hmpf") ?> <input id="rd4" type="radio" name="autoplay" value="0" <?php  if(get_option('autoplay')==0){ echo 'checked="checked"';} ?> />
+                    </td>
+                </tr>
                 <tr valign="top">
-        <th scope="row"><strong><?php _e("Number Of Tracks", "hmpf") ?></strong></th>
-        <td><input type="text" name="tracks" value="<?php echo get_option('tracks'); ?>" size="50" /><span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;"><?php _e("works only if you have selected show track list to 'YES'", "hmpf") ?></span></td>
-        </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Number Of Tracks", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <input type="text" name="tracks" value="<?php echo get_option('tracks'); ?>" size="50" />
+                        <span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;">
+                            <?php _e("works only if you have selected show track list to 'YES'", "hmpf") ?>
+                        </span>
+                    </td>
+                </tr>
                 <tr valign="top">
-        <th scope="row"><strong><?php _e("Currency Symbol", "hmpf") ?></strong></th>
-        <td><input type="text" name="currency" value="<?php echo get_option('currency'); ?>" size="50" /></td>
-        </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Currency Symbol", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <input type="text" name="currency" value="<?php echo get_option('currency'); ?>" size="50" />
+                    </td>
+                </tr>
                 <tr valign="top">
-        <th scope="row"><strong><?php _e("Background Colour", "hmpf") ?></strong></th>
-        <td><?php $color	=	get_option('color'); ?>
-        	<input type="text" name="color" value="<?php echo get_option('color'); ?>" size="50" /><span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;"><?php _e("Insert colour code in the format #000000 or use 'transparent'", "hmpf") ?></span>
-        </td>
-        </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Background Colour", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <?php $color = get_option('color'); ?>
+                        <input type="text" name="color" value="<?php echo get_option('color'); ?>" size="50" />
+                        <span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;">
+                            <?php _e("Insert colour code in the format #000000 or use 'transparent'", "hmpf") ?>
+                        </span>
+                    </td>
+                </tr>
                 <tr valign="top">
-        <th scope="row"><strong><?php _e("Text Colour", "hmpf") ?></strong></th>
-        <td><?php $tcolor	=	get_option('tcolor'); ?>
-        	<input type="text" name="tcolor" value="<?php echo get_option('tcolor'); ?>" size="50" /><span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;"><?php _e("Insert colour code in the format #cccccc", "hmpf") ?></span>
-       
-        </tr>
+                    <th scope="row">
+                        <strong>
+                            <?php _e("Text Colour", "hmpf") ?>
+                        </strong>
+                    </th>
+                    <td>
+                        <?php $tcolor = get_option('tcolor'); ?>
+                        
+                        <input type="text" name="tcolor" value="<?php echo get_option('tcolor'); ?>" size="50" />
+                        <span style="font-size:11px; color:#b2b2b2; font-style:italic; display:block;">
+                            <?php _e("Insert colour code in the format #cccccc", "hmpf") ?>
+                        </span>
+                    </td>
+                </tr>
             </table>
-    
-    <p class="submit">
-    <input type="submit" class="button-primary" value="<?php _e('Save Changes', "hmpf") ?>" />
-    </p>
+            <p class="submit">
+                <input type="submit" class="button-primary" value="<?php _e('Save Changes', "hmpf") ?>" />
+            </p>
 
-</form>
+            </form>
         </div>
-
         <div class="clear"></div>
         
     </div><!-- wpbody-content -->

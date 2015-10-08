@@ -34,9 +34,9 @@ This demo shows the player with tracklist enabled, ratings on, and autoplay off.
 
 This is Lite (free) version of the plugin. [Get Pro Version](http://enigmaplugins.com/plugins/html5-jquery-audio-pro/) if you need the following advanced features:
 
-*	Mulitple Playlists – create as many playlists as you like and embed any number of players on different pages of your site
+*	Mulitple Playlists ï¿½ create as many playlists as you like and embed any number of players on different pages of your site
 *	Drag n Drop playlist manager so you can reorder tracks
-*	Fully Responsive – resizes and adjust layout/design for responsive websites
+*	Fully Responsive ï¿½ resizes and adjust layout/design for responsive websites
 *	On/off option for ratings, artwork, artist field, auto-repeat, and cover art
 *	Widget support
 *	Embed full playlist or individual tracks with shortcodes
@@ -126,6 +126,9 @@ If you've tried all the obvious stuff and it's still not working please request 
 3. The add songs screen in WP-Admin
 
 == Changelog ==
+= 2.6.2 =
+* Remove error-reporting().
+* Missing strings marked for translation
 
 = 2.6.1 =
 * DB prefix issue fixed
