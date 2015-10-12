@@ -5,15 +5,14 @@ Plugin Name: HTML5 jQuery Audio Player
 Plugin URI: http://wordpress.org/extend/plugins/html5-jquery-audio-player/
 Description: The trendiest audio player plugin for WordPress. Works on iPhone/iPad and other mobile devices. Insert with shortcode [hmp_player]
 Author: Enigma Plugins
-Version: 2.6.1
+Version: 2.6.2
 Author URI: http://enigmaplugins.com.au
+Text Domain: html5-jquery-audio-player
+Domain Path: /languages
 */
 
 error_reporting(0);
 ini_set('display_errors', 0);
-
-//function add script
-load_plugin_textdomain('hmpf', false, dirname(plugin_basename(__FILE__)) . '/languages/');
 
 require 'includes/db-settings.php';
 register_activation_hook( __FILE__, 'hmp_db_create' );
@@ -65,31 +64,33 @@ function wp_hmp_playlist(){
 
 function wp_hmp_player(){
     if(get_option('showbuy')==1){ 
-	$bt	=	get_option('buy_text');
+	$bt = get_option('buy_text');
     }else{
-	$bt	=	'';
-    }
-        $ap	=	get_option('autoplay');
-    if(!$ap){
-	$ap	=	0;	
+	$bt = '';
     }
     
-    $desc	=	get_option('hmp_description');
-    $sb		=	get_option('showbuy');
-    $nt		=	get_option('tracks');
+    $ap = get_option('autoplay');
+    
+    if(!$ap){
+	$ap = 0;	
+    }
+    
+    $desc = get_option('hmp_description');
+    $sb	= get_option('showbuy');
+    $nt	= get_option('tracks');
     
     if(empty($nt)){
-	$nt	=	1;
+	$nt = 1;
     }
 	
-    $cr		=	get_option('currency');
-    $sl		=	get_option('showlist');
-    $cl		=	get_option('color');
+    $cr	= get_option('currency');
+    $sl	= get_option('showlist');
+    $cl	= get_option('color');
     
-    $tc		=	get_option('tcolor'); 
+    $tc	= get_option('tcolor'); 
     
     if(empty($tc)){
-	$tc	=	'#cccccc';
+	$tc = '#cccccc';
     }	
 	
     if($sb==0){
@@ -113,7 +114,9 @@ function wp_hmp_player(){
 ?>
     <style type="text/css">
         .ttw-music-player .tracklist, .ttw-music-player .buy, .ttw-music-player .description, .ttw-music-player
-        .player .title, .ttw-music-player .artist, .ttw-music-player .artist-outer{ color:<?php echo $tc; ?>; !important;}
+        .player .title, .ttw-music-player .artist, .ttw-music-player .artist-outer {
+            color:<?php echo $tc; ?>; !important;
+        }
     </style>
 <?php
     }
@@ -121,14 +124,18 @@ function wp_hmp_player(){
     if($tc=='black'){
 ?>
     <style type="text/css">
-        .ttw-music-player .player .title, .ttw-music-player .description, .ttw-music-player .tracklist li{ text-shadow:none !important;}
+        .ttw-music-player .player .title, .ttw-music-player .description, .ttw-music-player .tracklist li {
+            text-shadow:none !important;
+        }
     </style>
 <?php
     }
     
     if($sl==0){
 ?>  <style type="text/css">
-        .tracklist{ display:none !important;}
+        .tracklist{
+            display:none !important;
+        }
     </style>
 <?php
     }
@@ -143,10 +150,10 @@ function wp_hmp_player(){
 	var myPlaylist = [
         <?php
             global $wpdb;
-            $table	=	$wpdb->prefix.'hmp_playlist';	
-            $lsql	=	"SELECT * FROM $table";
+            $table = $wpdb->prefix.'hmp_playlist';	
+            $lsql = "SELECT * FROM $table";
 
-            $songs 	= 	$wpdb->get_results( $lsql  );
+            $songs = $wpdb->get_results( $lsql  );
 	
     if(!empty($songs)):
         foreach($songs as $song): ?>
@@ -168,8 +175,8 @@ function wp_hmp_player(){
 	{
             mp3:'<?php echo $pluginurl; ?>player/mix/1.mp3',
             oga:'<?php echo $pluginurl; ?>player/mix/1.ogg',
-            title:'<?php __('Sample Track','hmpf') ?>',
-            artist:'<?php __('Sample', 'hmpf') ?>',
+            title:'<?php __('Sample Track','html5-jquery-audio-player') ?>',
+            artist:'<?php __('Sample', 'html5-jquery-audio-player') ?>',
             rating:4,
             buy:'#',
             price:'1.00',
@@ -208,46 +215,42 @@ function my_admin_scripts() {
 }
 
 function implement_ajax5(){
+    global $wpdb;
+    $table = $wpdb->prefix."hmp_playlist";
+    $table1 = $wpdb->prefix."hmp_rating";
 
-global $wpdb;
-$table		=	$wpdb->prefix."hmp_playlist";
-$table1		=	$wpdb->prefix."hmp_rating";
+    $song_title = strip_tags($_POST['trackname']);
+    $rating_value = strip_tags($_POST['rating']);
 
-$song_title	=	strip_tags($_POST['trackname']);
-$rating_value	=	strip_tags($_POST['rating']);
+    $songres = $wpdb->get_row("SELECT * FROM $table WHERE `title`='$song_title'") or die(mysql_error());
+    $song_id = $songres->id;
+    $total_votes = $songres->total_votes;
+    $total_votes = $total_votes+1;
 
-$songres	=	$wpdb->get_row("SELECT * FROM $table WHERE `title`='$song_title'") or die(mysql_error());
-$song_id	=	$songres->id;
-$total_votes    =	$songres->total_votes;
-$total_votes    =	$total_votes+1;
+    $ip = $_SERVER['REMOTE_ADDR'];
 
-$ip		=	$_SERVER['REMOTE_ADDR'];
+    $data = array(
+                'song_id' => $song_id,
+                'rating_value' => $rating_value,
+                'user_ip' => $ip
+            );
 
-$data           =	array(
-                            'song_id' => $song_id,
-                            'rating_value' => $rating_value,
-                            'user_ip' => $ip
-                        );
+    $check = $wpdb->get_results("SELECT * FROM $table1 WHERE song_id='$song_id' AND user_ip='$ip'");
+    if(!$check){
+        $insert = $wpdb->insert($table1,$data);
 
-$check	=	$wpdb->get_results("SELECT * FROM $table1 WHERE song_id='$song_id' AND user_ip='$ip'");
-if(!$check){
-
-$insert	=	$wpdb->insert($table1,$data);
-	
-$wpdb->update( 
-	$table, 
-	array(
-            'total_votes'   =>  $total_votes,
-	), 
-	array( 'ID' => $song_id )
-) or die(mysql_error());
-echo __('Thank You', 'hmpf');
-}else{
-    echo __('Already rated', 'hmpf');
-}
-	
-die();
-   
+        $wpdb->update( 
+                $table, 
+                array(
+                    'total_votes'   =>  $total_votes,
+                ), 
+                array( 'ID' => $song_id )
+        ) or die(mysql_error());
+        echo __('Thank You', 'html5-jquery-audio-player');
+    }else{
+        echo __('Already rated', 'html5-jquery-audio-player');
+    }	
+    die();
 }
 
 add_action('wp_ajax_my_special_ajax_call5', 'implement_ajax5');
